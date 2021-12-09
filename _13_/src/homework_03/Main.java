@@ -15,6 +15,7 @@ public class Main {
         System.out.println("Введіть 8 щоб вивести всіх корупціонерів");
         System.out.print(" Print number: ");
     }
+
     public static void main(String[] args) throws Exception {
         Goverment d = new Goverment();
         Scanner sc = new Scanner(System.in);
@@ -38,6 +39,37 @@ public class Main {
                 NumberForDeleteDeputyFromFruction(d);
             }else if (number == 8){
                 NumberForPrintAllFalseDeputyFromFruction(d);
+                d.addFuction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 2){
+                d.deleteFuction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 3){
+                d.printALlFuction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 4){
+                d.clearFuction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 5){
+                d.printOneFuction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 6){
+                d.AddDeputyForFruction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 7){
+                d.deleteDeputyForFuction();
+                System.out.println("_______________________");
+                main();
+            }else if (number == 8){
+                d.printAllFalseDeputy();
+                System.out.println("_______________________");
+                main();
             }
             else {
                 throw new Exception("Please print number (1 to 6)");
@@ -93,4 +125,5 @@ public class Main {
         System.out.println("_______________________");
         main();
     }
+
 }

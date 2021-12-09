@@ -7,12 +7,14 @@ public class Deputy extends Human{
     private boolean brights;
     private int brightsInt;
 
-    public Deputy(int low, int growth, String name, String lastName, boolean brights, Integer brightsInt) {
+
+    public Deputy(int low, int growth, String name, String lastName, boolean brights, int brightsInt) {
         super(low, growth);
         this.name = name;
         this.lastName = lastName;
         this.brights = brights;
         this.brightsInt = brightsInt;
+        this.brightsInt = 0;
     }
 
     public String getName() {
