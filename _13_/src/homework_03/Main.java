@@ -12,10 +12,9 @@ public class Main {
         System.out.println("Введіть 5 щоб вивести конкретну фракцію");
         System.out.println("Введіть 6 щоб додати депутата в фракцію");
         System.out.println("Введіть 7 щоб видалити депутата з фракції");
-        System.out.println();
-        System.out.print("          Print number: ");
+        System.out.println("Введіть 8 щоб вивести всіх корупціонерів");
+        System.out.print(" Print number: ");
     }
-
     public static void main(String[] args) throws Exception {
         Goverment d = new Goverment();
         Scanner sc = new Scanner(System.in);
@@ -24,42 +23,74 @@ public class Main {
         while (true){
             int number = sc.nextInt();
             if (number == 1){
-                d.addFuction();
-                System.out.println("_______________________");
-                main();
+                NumberForCreatedNewDeputy(d);
             }else if (number == 2){
-                d.deleteFuction();
-                System.out.println("_______________________");
-                main();
+                NumberForDeleteFruction(d);
             }else if (number == 3){
-                d.printALlFuction();
-                System.out.println("_______________________");
-                main();
+                NumberForPrintAllFruction(d);
             }else if (number == 4){
-                d.clearFuction();
-                System.out.println("_______________________");
-                main();
+                NumberForClearAllFruction(d);
             }else if (number == 5){
-                d.printOneFuction();
-                System.out.println("_______________________");
-                main();
+                NumberForPrintOneFruction(d);
             }else if (number == 6){
-                d.AddDeputyForFruction();
-                System.out.println("_______________________");
-                main();
+                NumberForAddDeputyForFruction(d);
             }else if (number == 7){
-                d.deleteDeputyForFuction();
-                System.out.println("_______________________");
-                main();
+                NumberForDeleteDeputyFromFruction(d);
             }else if (number == 8){
-                d.printAllFalseDeputy();
-                System.out.println("_______________________");
-                main();
+                NumberForPrintAllFalseDeputyFromFruction(d);
             }
             else {
                 throw new Exception("Please print number (1 to 6)");
             }
         }
 
+    }
+
+    private static void NumberForPrintAllFalseDeputyFromFruction(Goverment d) {
+        d.printAllFalseDeputy();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForDeleteDeputyFromFruction(Goverment d) throws Exception {
+        d.deleteDeputyForFuction();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForAddDeputyForFruction(Goverment d) throws Exception {
+        d.AddDeputyForFruction();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForPrintOneFruction(Goverment d) throws Exception {
+        d.printOneFuction();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForClearAllFruction(Goverment d) throws Exception {
+        d.clearFuction();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForPrintAllFruction(Goverment d) {
+        d.printALlFuction();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForDeleteFruction(Goverment d) throws Exception {
+        d.deleteFuction();
+        System.out.println("_______________________");
+        main();
+    }
+
+    private static void NumberForCreatedNewDeputy(Goverment d) {
+        d.addFuction();
+        System.out.println("_______________________");
+        main();
     }
 }

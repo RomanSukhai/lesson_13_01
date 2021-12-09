@@ -1,9 +1,8 @@
 package homework_03;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Fuction {
     private String name;
@@ -37,9 +36,8 @@ public class Fuction {
                 ", fuction=" + fuction +
                 '}';
     }
-
     Scanner sc = new Scanner(System.in);
-    public void AddDeputy(){
+    void addDeputy(){
         System.out.println();
         System.out.println();
         System.out.println("-_-_-_-_-_-_-_-_-_");
@@ -53,40 +51,32 @@ public class Fuction {
         int growth = sc.nextInt();
         System.out.print("Взятки брав: ");
         boolean brights = sc.nextBoolean();
-        System.out.print("Скільки?: ");
-        int growthInt = sc.nextInt();
-        System.out.println("-_-_-_-_-_-_-_-_-_");
-        fuction.add(new Deputy(low,growth,name,lastName,brights,growthInt));
+        if (brights){
+            System.out.print("Скільки?: ");
+            int growthInt = sc.nextInt();
+            System.out.println("-_-_-_-_-_-_-_-_-_");
+            fuction.add(new Deputy(low, growth, name, lastName, brights, growthInt));
+        }else if(!brights){
+            fuction.add(new Deputy(low, growth, name, lastName, brights, 0));
+        }
     }
     public void deleteDeputy(){
         System.out.print("Введіть прізвище депутата: ");
         String lastName = sc.next();
-        Iterator<Deputy> iterator= fuction.iterator();
-        while (iterator.hasNext()){
-            Deputy next = iterator.next();
-            if (next.getLastName().equalsIgnoreCase(lastName)){
-                iterator.remove();
-            }
-        }
+        System.out.println(fuction);
+        List<Deputy> collect = fuction.stream().filter((x)->!x.getLastName().equalsIgnoreCase(lastName)).collect(Collectors.toList());
+        fuction.clear();
+        fuction.addAll(collect);
+        System.out.println(fuction);
     }
-    public void printFalseDeputy(){
-        Iterator<Deputy> iterator= fuction.iterator();
-        while (iterator.hasNext()){
-            Deputy next = iterator.next();
-            if (next.isBrights()){
-                System.out.println(next);
-            }
-        }
+    public void printFalseDeputy() {
+        fuction.stream().filter(x-> x.isBrights()).forEach(x-> System.out.println(x));
     }
-    public void printAllDeputy(){
-        for (Deputy d :fuction){
-            System.out.println(d.toString());
-        }
+    public void printAllDeputy() {
+        fuction.forEach(d-> System.out.println(d));
     }
-    public void deleteAllDeputy(){
-        for (Deputy d :fuction){
-            fuction.remove(d.toString());
-        }
+    public void deleteAllDeputy() {
+        fuction.forEach(d->fuction.remove(d.toString()));
     }
 
 }
